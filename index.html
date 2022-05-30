@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div id="universe">
+      
+  <div id="adjinImg">
+    <img id="starWars" src="https://lh3.googleusercontent.com/VLJmRqMpzI6T0V5VachBg8swspFkg-xyMvWukIXLDxb-1gV57HRtk_oAOIwhhTABuHy2_A=s170" alt="">
+    <input oninput="debounceFunction(main,500)" type="text" id="SearchData" placeholder="Search Characters">
+
+    <div id="container"></div>
+
+  </div>
+
+    </div>
+    
+</body>
+</html>
+
+<script>
+    let container = document.getElementById("container")
+    let id;
+
+    async function filterData(SearchTerm){
+
+        let url = `https://swapi.dev/api/people/?search=${SearchTerm}`
+
+        let res = await fetch(url);
+
+        let filter = await res.json();
+        // console.log(filter)
+
+        if(filter.count == 82){
+            container.innerHTML = null
+        }
+        else if(filter.count==0){
+            container.innerHTML="No results found. Try again..."
+
+        }
+        else{
+
+            return filter;
+
+        }
+        
+    }
+
+
+
+    async function main(){
+
+        let searchData = document.getElementById("SearchData").value
+
+        // console.log(searchData)
+        let response = await filterData(searchData)
+        let requiredData =  response.results;
+        // console.log(requiredData)
+        
+
+        appendData(requiredData);
+    }
+
+    
+  function  debounceFunction(func,delay){
+      if(id){
+          clearTimeout(id)
+      }
+
+
+      id = setTimeout(function(){
+
+        func()
+
+      },delay)
+
+
+    }
+
+    function appendData(data){
+
+        container.innerHTML= null;
+
+    data.forEach(function(el){
+
+            let box = document.createElement("div");
+            let nameYob = document.createElement("div")
+            
+            let name = document.createElement("div")
+            name.innerText = el.name
+
+            let yob = document.createElement("div")
+            yob.innerText = el.birth_year
+
+            let gender = document.createElement("div")
+            gender.innerText=el.gender;
+
+            nameYob.append(name,yob);
+            box.append(nameYob,gender);
+            container.append(box)
+
+            
+        });
+     
+
+    }
+
+    
+
+
+    
+
+    
+</script>

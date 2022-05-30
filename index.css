@@ -1,0 +1,90 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color:#110b0b;;
+}
+
+#starWars{
+    width: 200px;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 25px;
+}
+#SearchData{
+    width: 47%;
+    margin: auto;
+    height: 50px;
+    border-radius: 12px;
+    background-color:#423e3e;;
+    margin-bottom: 4px;
+    outline: none;border: none;
+    color: rgb(225, 213, 190);
+    font-size: 19px;
+    padding-left: 12px;
+}
+
+#adjinImg{
+    display: flex;
+    flex-direction: column ;
+    width: 100%;
+   
+}
+
+#container{
+     width: 47.5%;
+     height: 300px;
+     margin: auto;
+     overflow: auto;
+     color: aliceblue;   
+     /* background-color:#423e3e; */
+     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif
+    }
+
+    #container>div{
+        /* border: 1px solid rgb(225, 212, 212); */
+        display: flex;
+        height: 60px;
+        flex-direction:row;
+        justify-content: space-between;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 8px;
+        margin-bottom: 3px;
+        border-radius: 7px;
+        box-shadow:rgb(132, 109, 251) 0px -3px 5px;
+        /* border: 1px solid black; */
+        background-color:#423e3e;
+
+
+    }
+    #container>div:hover{
+        background-color: rgb(17, 151, 155);
+        color: rgb(198, 245, 14);
+    }
+
+    
+
+    #container>div>div:first-child>div:first-child{
+
+        margin-bottom: 7px;
+        margin-top: 5px;    
+        font-size: 15px;
+
+    }
+    #container>div>div:first-child>div:last-child{
+     font-size: 10px;
+
+    }
+
+#container::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: rgb(170, 170, 170); /* or add it to the track */
+  }
+
+  #container::-webkit-scrollbar-thumb {
+    background: rgb(138, 27, 243);
+}
